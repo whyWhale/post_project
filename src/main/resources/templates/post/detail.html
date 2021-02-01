@@ -1,0 +1,38 @@
+{{>layout/header}}
+
+<div class="ui-icon-contact">{{>layout/navbar}}</div>
+
+<div class="col-md-14" >
+    <div class="col-md-7">
+        <form>
+            {{#post}}
+            <input type="hidden"  id="id" value="{{id}}">
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" id="title" readonly value="{{title}}">
+            </div>
+            <div class="form-group">
+                <label for="author"> 작성자 </label>
+                <input type="text" class="form-control" id="author" readonly value="{{writer}}">
+            </div>
+            <div class="form-group">
+                <label for="content"> 내용 </label>
+                <textarea class="form-control" id="content"  readonly>{{content}}</textarea>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                {{#sessionUser}}
+                <button type="button" class="btn btn-primary"><a href="/post/update/{{id}}" style="color: aliceblue">수정</a></button>
+                <button type="button" class="btn btn-danger" id="btn-delete" >삭제</button>
+                {{/sessionUser}}
+
+                {{^sessionUser}}
+                <button type="button" class="btn btn-primary"><a href="/" style="color:antiquewhite">main</a></button>
+                {{/sessionUser}}
+            </div>
+            {{/post}}
+        </form>
+    </div>
+</div>
+
+{{>layout/footer}}

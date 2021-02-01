@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><h1>post_Project</h1></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/post/save">작성하기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/jsEx" >TestJs</a>
+                </li>
+                <li>
+                {{#username}}
+                <a class="btn btn-light active">Logged in as: <span id="Guest">{{username}}</span></a>
+                    <a class="btn btn-danger active" href="/logout">logout </a>
+                {{/username}}
+                {{^username}}
+                <a href="/oauth2/authorization/google" class="btn btn-light active">google login</span></a>
+                <a href="/oauth2/authorization/naver" class="btn btn-success active">naver login</a>
+                    <span id="User">GUEST</span>
+                {{/username}}
+                </li>
+                <li>
+                    <form action="/">
+                    <input type="text" class="form-control me-2" placeholder="Search" name="keyword"/>
+                    <button class="btn btn-outline-success" type="submit" id="search">Search</button>
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>

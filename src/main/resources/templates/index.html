@@ -1,0 +1,48 @@
+{{>layout/header}}
+
+<div class="col-md-12">
+{{>layout/navbar}}
+    <!-- 목록 출력 영역 -->
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr class="table-secondary">
+            <th>게시글번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>최종수정일</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#post}}
+        <tr class="table-light">
+            <td>{{id}}</td>
+            <td><a href="/post/{{id}}">{{title}}</a></td>
+            <td>{{writer}}</td>
+            <td>{{modified}}</td>
+        </tr>
+        {{/post}}
+
+        {{^post}}
+        <td> Post.isEmpty()</td>
+        <td> Post.isEmpty()</td>
+        <td> Post.isEmpty()</td>
+        <td> Post.isEmpty()</td>
+        {{/post}}
+        </tbody>
+    </table>
+    <ul class="pagination justify-content-center">
+        {{#pageable.hasPrevious}}
+        <li class="page-item">
+            <a class="page-link" href="?page={{prev}}">Previous</a>
+        </li>
+        {{/pageable.hasPrevious}}
+        {{#next}}
+        <li class="page-item">
+            <a class="page-link" href="?page={{next}}">Next</a>
+        </li>
+        {{/next}}
+    </ul>
+</div>
+
+
+{{>layout/footer}}
