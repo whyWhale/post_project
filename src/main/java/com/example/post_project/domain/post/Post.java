@@ -27,6 +27,7 @@ public class Post extends BaseEntity {
     @JoinColumn()
     private Users user;
 
+
     @Builder
     public Post(String title, String writer, String content,Users user) {
         this.title = title;

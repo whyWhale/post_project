@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class PostResponseDto {
-    Long id;
+    private Long post_id;
     private String title;
     private String writer;
     private String content;
@@ -14,7 +14,7 @@ public class PostResponseDto {
 
 
     public PostResponseDto(Post post) {
-        this.id = post.getId();
+        this.post_id = post.getId();
         this.title = post.getTitle();
         this.writer =post.getWriter();
         this.content = post.getContent();

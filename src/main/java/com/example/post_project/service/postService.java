@@ -68,4 +68,15 @@ public class postService {
     {
         return postRepository.findAll(pageable).toList();
     }
+
+    @Transactional(readOnly = true)
+    public long useingAllPagicCnt()
+    {
+        return postRepository.count();
+    }
+    @Transactional(readOnly = true)
+    public long useingSearchPagingCnt2(String keyword)
+    {
+        return postRepository.findByTitleOrContentContaining(keyword,keyword).size();
+    }
 }

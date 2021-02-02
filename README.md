@@ -15,7 +15,11 @@
 - 2021.02.01
     - `paging && serch`
 - 2021.02.02
-    - `trying image attaching `
+    - `update UI Bug updated`
+    - `feat : Pageing recodeReadCount , SerachPagingReadCount `
+- 2021.02.03
+  - `Image attaching designing`
+  
 ***
 
     

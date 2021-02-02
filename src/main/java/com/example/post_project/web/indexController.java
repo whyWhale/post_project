@@ -35,9 +35,8 @@ public class indexController {
            model.addAttribute("post",pageList);
            model.addAttribute("prev",pageable.previousOrFirst().getPageNumber());
            int pageSize=pageList.size();
-           System.out.println(pageable.getPageNumber());
-           System.out.println(pageSize);
-           if(pageSize!=0 && pageSize/5>pageable.getPageNumber())
+           long all=postService.useingAllPagicCnt();
+           if(all/5>pageable.getPageNumber())
            {
                model.addAttribute("next",pageable.next().getPageNumber());
            }
@@ -45,15 +44,17 @@ public class indexController {
        }
        else
        {
+
            List<PostListResponseDto> list=postService.Search(keyword,pageable);
            for(PostListResponseDto p:list)
            {
                System.out.println(p.toString());
            }
+            long all=postService.useingSearchPagingCnt2(keyword);
            model.addAttribute("post",list);
            model.addAttribute("prev",pageable.previousOrFirst().getPageNumber());
            int pageSize=list.size();
-           if(pageSize/5>pageable.getPageNumber())
+           if(all/5>pageable.getPageNumber())
            {
                model.addAttribute("next",pageable.next().getPageNumber());
            }
