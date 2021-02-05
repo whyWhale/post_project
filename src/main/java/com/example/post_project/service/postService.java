@@ -1,5 +1,6 @@
 package com.example.post_project.service;
 
+import com.example.post_project.config.auth.LoginUser;
 import com.example.post_project.config.auth.dto.SessionUser;
 import com.example.post_project.domain.post.Post;
 import com.example.post_project.domain.post.PostRepository;
@@ -30,14 +31,16 @@ public class postService {
     {
         Users user=usersRepository.findById(sessionUser.getId()).get();
         requestDto.setUser(user);
-        Long result=postRepository.save(requestDto.entity()).getId();
-        return result;
+        return postRepository.save(requestDto.entity()).getId();
     }
 
     @Transactional
-    public Long update(Long id, PostUpdateRequestDto requestDto) {
+    public Long update(Long id, PostUpdateRequestDto requestDto, @LoginUser SessionUser user) {
         Post post=postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 글이 노존재"));
-        post.update(requestDto); // dirtyCheck
+        if(post.getUser().getId()==user.getId())
+            post.update(requestDto); // dirtyCheck
+        else
+            return null;
         return id;
     }
 
@@ -70,12 +73,12 @@ public class postService {
     }
 
     @Transactional(readOnly = true)
-    public long useingAllPagicCnt()
+    public long usingAllPagingCnt()
     {
         return postRepository.count();
     }
     @Transactional(readOnly = true)
-    public long useingSearchPagingCnt2(String keyword)
+    public long usingSearchPagingCnt2(String keyword)
     {
         return postRepository.findByTitleOrContentContaining(keyword,keyword).size();
     }

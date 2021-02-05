@@ -20,8 +20,8 @@ public class postApiController {
     }
 
     @PutMapping("/{id}")
-    public Long postUpdate(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto) {
-        return postService.update(id, requestDto);
+    public Long postUpdate(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto,@LoginUser SessionUser user) {
+        return postService.update(id, requestDto,user);
     }
 
     @DeleteMapping("/{id}")

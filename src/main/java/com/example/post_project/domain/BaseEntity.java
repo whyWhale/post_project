@@ -24,16 +24,14 @@ public class BaseEntity {
     @LastModifiedDate
     private LocalDateTime modified;
 
-    public String getFormattiedCreateDate(){
-        return getFormattedDate(created,"yyyy.MM.dd HH:mm:ss");
-
+    public String getFormattiedCreateDate() {
+        return getFormattedDate(created, "yyyy.MM.dd HH:mm:ss");
     }
 
-    public String getFormattiedModifyDate(){
-        return getFormattedDate(modified,"yyyy.MM.dd HH:mm:ss");
-    }
-    public String getFormattedDate(LocalDateTime dataTime,String format){
-        if(dataTime == null){
+    public String getFormattiedModifyDate() { return getFormattedDate(modified, "yyyy.MM.dd HH:mm:ss"); }
+
+    public String getFormattedDate(LocalDateTime dataTime, String format) {
+        if (dataTime == null) {
             return "";
         }
         return dataTime.format(DateTimeFormatter.ofPattern(format));

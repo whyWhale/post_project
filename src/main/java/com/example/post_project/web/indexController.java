@@ -6,13 +6,11 @@ import com.example.post_project.domain.post.Post;
 import com.example.post_project.service.postService;
 import com.example.post_project.web.dto.PostListResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -35,7 +33,7 @@ public class indexController {
            model.addAttribute("post",pageList);
            model.addAttribute("prev",pageable.previousOrFirst().getPageNumber());
            int pageSize=pageList.size();
-           long all=postService.useingAllPagicCnt();
+           long all=postService.usingAllPagingCnt();
            if(all/5>pageable.getPageNumber())
            {
                model.addAttribute("next",pageable.next().getPageNumber());
@@ -50,7 +48,7 @@ public class indexController {
            {
                System.out.println(p.toString());
            }
-            long all=postService.useingSearchPagingCnt2(keyword);
+            long all=postService.usingSearchPagingCnt2(keyword);
            model.addAttribute("post",list);
            model.addAttribute("prev",pageable.previousOrFirst().getPageNumber());
            int pageSize=list.size();

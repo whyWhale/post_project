@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing //mappedSuper 활성
 @SpringBootApplication
+
 public class PostProjectApplication {
 
     public static void main(String[] args) {

@@ -17,7 +17,10 @@
 - 2021.02.02
     - `update UI Bug updated`
     - `feat : Pageing recodeReadCount , SerachPagingReadCount `
-- 2021.02.03
+- 2021.02.03~02.04
+  - `test code write (when user and post not relate to mapping ,It it success + post)`
+- 2021.02.05~
+  - `data modeling check`
   - `Image attaching designing`
   
 ***
