@@ -9,12 +9,15 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post,Long> {
 
-    @Query(value = "select p from Post p order by p.id desc ")
+    @Query(value = "select p from Post p order by p.created desc ")
     List<Post> findAllByDesc();
 
     Page<Post> findAll(Pageable pageable);
 
-    List<Post> findByTitleOrContentContaining(String title,String content,Pageable pageable);
-    List<Post> findByTitleOrContentContaining(String title,String content);
+    List<Post> findByTitleContainingOrContentContaining(String title,String content,Pageable pageable);
+    List<Post> findByTitleContainingOrContentContaining(String title,String content);
+
+    @Query(value = "select p from Post p where p.title like '%:title%' and p.content like '%:content%'")
+    List<Post> findByTitleContainingAndContentContaining(String title,String content,Pageable pageable);
 
 }

@@ -37,7 +37,7 @@ public class postService {
     @Transactional
     public Long update(Long id, PostUpdateRequestDto requestDto, @LoginUser SessionUser user) {
         Post post=postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 글이 노존재"));
-        if(post.getUser().getId()==user.getId())
+        if(post.getUser().getId().equals(user.getId()))
             post.update(requestDto); // dirtyCheck
         else
             return null;
@@ -64,7 +64,7 @@ public class postService {
     @Transactional(readOnly = true)
     public List<PostListResponseDto> Search(String keyword,Pageable pageable)
     {
-        return postRepository.findByTitleOrContentContaining(keyword,keyword,pageable).stream().map(PostListResponseDto::new).collect(Collectors.toList());
+        return postRepository.findByTitleContainingOrContentContaining(keyword,keyword,pageable).stream().map(PostListResponseDto::new).collect(Collectors.toList());
     }
     @Transactional(readOnly = true)
     public List<Post> pagingList(Pageable pageable)
@@ -80,6 +80,6 @@ public class postService {
     @Transactional(readOnly = true)
     public long usingSearchPagingCnt2(String keyword)
     {
-        return postRepository.findByTitleOrContentContaining(keyword,keyword).size();
+        return postRepository.findByTitleContainingOrContentContaining(keyword,keyword).size();
     }
 }
