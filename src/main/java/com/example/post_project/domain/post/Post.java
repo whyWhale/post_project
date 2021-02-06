@@ -1,13 +1,15 @@
 package com.example.post_project.domain.post;
 
 import com.example.post_project.domain.BaseEntity;
+import com.example.post_project.domain.comment.Comment;
 import com.example.post_project.domain.user.Users;
-import com.example.post_project.web.dto.PostUpdateRequestDto;
+import com.example.post_project.web.dto.post.PostUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -26,6 +28,9 @@ public class Post extends BaseEntity {
     @ManyToOne
     @JoinColumn()
     private Users user;
+
+    @OneToMany(mappedBy = "post",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE,orphanRemoval = true)
+    private List<Comment> comments;
 
 
     @Builder

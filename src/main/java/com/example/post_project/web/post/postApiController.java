@@ -3,8 +3,8 @@ package com.example.post_project.web.post;
 import com.example.post_project.config.auth.LoginUser;
 import com.example.post_project.config.auth.dto.SessionUser;
 import com.example.post_project.service.*;
-import com.example.post_project.web.dto.PostSaveRequestDto;
-import com.example.post_project.web.dto.PostUpdateRequestDto;
+import com.example.post_project.web.dto.post.PostSaveRequestDto;
+import com.example.post_project.web.dto.post.PostUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +29,5 @@ public class postApiController {
         postService.delete(id);
         return id;
     }
-
-
-
-
-
 
 }

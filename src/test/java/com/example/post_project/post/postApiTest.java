@@ -1,14 +1,10 @@
 package com.example.post_project.post;
 
-import com.example.post_project.config.auth.dto.SessionUser;
 import com.example.post_project.domain.post.Post;
 import com.example.post_project.domain.post.PostRepository;
-import com.example.post_project.domain.user.Role;
-import com.example.post_project.domain.user.Users;
-import com.example.post_project.web.dto.PostSaveRequestDto;
-import com.example.post_project.web.dto.PostUpdateRequestDto;
+import com.example.post_project.web.dto.post.PostSaveRequestDto;
+import com.example.post_project.web.dto.post.PostUpdateRequestDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -30,9 +26,6 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import java.util.List;
-
-import java.security.Security;
 import java.util.List;
 
 @RunWith(SpringRunner.class)

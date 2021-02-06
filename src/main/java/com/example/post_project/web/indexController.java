@@ -4,7 +4,7 @@ import com.example.post_project.config.auth.LoginUser;
 import com.example.post_project.config.auth.dto.SessionUser;
 import com.example.post_project.domain.post.Post;
 import com.example.post_project.service.postService;
-import com.example.post_project.web.dto.PostListResponseDto;
+import com.example.post_project.web.dto.post.PostListResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;

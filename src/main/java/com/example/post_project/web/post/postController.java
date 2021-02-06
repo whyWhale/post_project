@@ -3,7 +3,7 @@ package com.example.post_project.web.post;
 import com.example.post_project.config.auth.LoginUser;
 import com.example.post_project.config.auth.dto.SessionUser;
 import com.example.post_project.service.postService;
-import com.example.post_project.web.dto.PostResponseDto;
+import com.example.post_project.web.dto.post.PostResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

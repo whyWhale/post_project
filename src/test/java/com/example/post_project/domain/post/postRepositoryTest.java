@@ -33,7 +33,7 @@ public class postRepositoryTest {
 
         postsRepository.save(Post.builder()
                 .title(title)
-                .content(content)
+                .content("test title")
                 .writer("KBY_TECH")
                 .build());
 
@@ -44,6 +44,48 @@ public class postRepositoryTest {
         Post posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+    }
+    @Test
+    @DisplayName("keyword searching")
+    public void search()
+    {
+        //given
+        String title = "test title";
+        String content = "test content";
+
+        postsRepository.save(Post.builder()
+                .title("x")
+                .content(content)
+                .writer("KBY_TECH")
+                .build());
+        postsRepository.save(Post.builder()
+                .title(title)
+                .content("x")
+                .writer("KBY_TECH2")
+                .build());
+        postsRepository.save(Post.builder()
+                .title(title)
+                .content(content)
+                .writer("KBY_TECH3")
+                .build());
+
+        //when
+        List<Post> postsList = postsRepository.findByKeyword("x","x");
+        for(Post p:postsList)
+        {
+            System.out.println(p.getTitle());
+            System.out.println(p.getContent());
+//            assertThat(p.getTitle()).isEqualTo(title);
+//            assertThat(p.getContent()).isEqualTo(content);
+        }
+        //then
+        if(!postsList.isEmpty()) {
+            Post posts = postsList.get(0);
+//            assertThat(posts.getTitle()).isEqualTo(title);
+//            assertThat(posts.getContent()).isEqualTo(content);
+        }
+        else
+            System.out.println("NULL@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     }
 
     @Test

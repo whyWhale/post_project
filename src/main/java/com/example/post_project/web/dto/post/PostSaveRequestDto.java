@@ -1,4 +1,4 @@
-package com.example.post_project.web.dto;
+package com.example.post_project.web.dto.post;
 
 import com.example.post_project.domain.post.Post;
 import com.example.post_project.domain.user.Users;
