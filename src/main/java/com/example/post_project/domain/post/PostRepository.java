@@ -21,4 +21,6 @@ public interface PostRepository extends JpaRepository<Post,Long> {
     @Query(value = "select p from Post p where p.title like %:title% or p.content like %:content% ")
     List<Post> findByKeyword(@Param("title")String title, @Param("content")String content);
 
+    Integer countByTitleContainingOrContentContaining(String title,String content);
+
 }

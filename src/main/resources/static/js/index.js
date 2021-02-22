@@ -48,6 +48,7 @@ var post= {
             window.location.href = '/post/'+id;
         }).fail(function (error) {
             alert(JSON.stringify(error));
+            console.log(error);
         });
     },
 

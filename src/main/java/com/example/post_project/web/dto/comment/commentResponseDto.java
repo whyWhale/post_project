@@ -1,4 +1,4 @@
 package com.example.post_project.web.dto.comment;
 
-public class commentListResponseDto {
+public class commentResponseDto {
 }

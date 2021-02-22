@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.Optional;
+
 @ToString
 @Getter
 public class SessionUser implements Serializable {
@@ -19,4 +21,5 @@ public class SessionUser implements Serializable {
         this.email = user.getEmail();
         this.picture = user.getPicture();
     }
+
 }

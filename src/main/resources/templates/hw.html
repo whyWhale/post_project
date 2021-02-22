@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<Fieldset>
+    <legend>Text</legend>
+    <textarea id='text' rows='4' column='30'></textarea>
+</Fieldset>
+<Fieldset>
+    <legend>Pimp it</legend>
+    <button id='biggerBtn'>bigger Pimp it</button>
+    <br>
+
+    <input id="blingCheck" type="checkbox"> Bling<br>
+    <button id="SnoopifyBtn">Snoopify</button>
+    <br>
+    <button id="igpayAtinlay">Igpay Atinlay</button>
+    <br>
+    <button id="malkovitch">Malkovitch</button>
+</Fieldset>
+<script type="text/javascript">
+
+    var index = {
+        init: function () {
+            var th = this;
+            var cnt = 15;
+            var x = document.getElementById("biggerBtn");
+            var y = document.getElementById("blingCheck")
+
+
+            x.onclick = function () {
+                var x = document.getElementById("text");
+                x.style.fontSize = "10px";
+                cnt++;
+                th.expand(x, cnt);
+            }
+            y.onclick = function () {
+                var a = document.getElementById("text");
+                if (y.checked) {
+                    a.style.color = "red";
+                    a.style.textDecorationLine = "underline";
+                }
+                else
+                {
+                    a.style.color = "black";
+                    a.style.textDecorationLine = "none";
+                }
+            }
+        },
+        expand: function (btn, cnt) {
+            btn.style.fontSize = cnt + "px";
+        },
+        change: function () {
+        }
+
+    }
+    index.init();
+
+</script>
+</body>
+</html>

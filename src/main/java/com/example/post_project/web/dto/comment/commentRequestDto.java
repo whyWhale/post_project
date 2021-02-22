@@ -7,21 +7,27 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 @Getter
 @NoArgsConstructor
-public class commentSaveRequestDto {
+public class commentRequestDto {
     private String writer;
     private String content;
+    private Long postId;
     private Post post;
 
-    public commentSaveRequestDto(String writer, String content) {
+    public commentRequestDto(String writer, String content,Long postId) {
         this.writer = writer;
         this.content = content;
+        this.postId=postId;
     }
 
-    public void setPost(Post post)
-    {
-        this.post=post;
+    public Post getPost() {
+        return post;
     }
-    public Comment entity(){
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public Comment toEntity(){
         return Comment.builder().content(content).post(post).cs_writer(writer).build();
     }
 }

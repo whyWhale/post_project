@@ -1,0 +1,47 @@
+package com.example.post_project.service;
+
+import com.example.post_project.config.auth.dto.SessionUser;
+import com.example.post_project.domain.user.Users;
+import com.example.post_project.domain.user.UsersRepository;
+import com.example.post_project.web.dto.user.UserRequestDto;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.servlet.http.HttpSession;
+import java.util.Optional;
+@Slf4j
+@RequiredArgsConstructor
+@Service
+public class UserService implements UserDetailsService {
+    private final UsersRepository usersRepository;
+    private final HttpSession httpSession;
+
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        System.out.println("username = " + email);
+        Optional<Users> user=usersRepository.findByEmail(email);
+        if(user.isPresent())
+        {
+            httpSession.setAttribute("user", new SessionUser(user.get()));
+            log.info(user.get().getPassword());
+            return user.get();
+        }
+        log.info(" this "+email+" not signUp email ,check you Email!");
+        throw new UsernameNotFoundException(" this "+email+" not signUp email ,check you Email!");
+    }
+
+    @Transactional
+    public ResponseEntity create(UserRequestDto userRequestDto)
+    {
+        Users user=usersRepository.save(userRequestDto.toEntity());
+        return ResponseEntity.ok("회원가입이 정상적으로 완료되었습니다.");
+    }
+}

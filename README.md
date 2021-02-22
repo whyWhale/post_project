@@ -5,7 +5,7 @@
   >  - Login  (스프링 시큐리티 oAuth2 (NAVER,GOOGLE))\
   >  - 게시판 검색
 ***
-- 2021.01.27
+- 2021.01.27****
   - `feat : 게시판 CRUD 완성 `
 - 2021.01.29
     - `feat : 구글 API 연동, session 설정, 사용자_게시판 연관관계 설정` 
@@ -20,9 +20,13 @@
 - 2021.02.03~02.04
   - `test code write (when user and post not relate to mapping ,It it success + post)`
 - 2021.02.05~
-  - `data modeling check`
-  - `Image attaching designing`
-  
+  - [v]`data modeling check` 
+  - [보류]`Image attaching designing`
+  - [v] `other project Ready... ` 
+- 2021.02-23~
+  - [v] `updated: codeRefactoring (OOP)`
+  - [v] `feat :paging class create ,`
+  - [v] `feat : form valid`
 ***
 
     

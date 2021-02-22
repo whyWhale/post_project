@@ -7,11 +7,15 @@ import com.example.post_project.web.dto.post.PostUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
+@ToString
+@DynamicUpdate
 @NoArgsConstructor
 @Entity
 public class Post extends BaseEntity {
@@ -25,10 +29,12 @@ public class Post extends BaseEntity {
     @Column(columnDefinition = "TEXT",nullable = false)
     private String content;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn()
     private Users user;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "post",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE,orphanRemoval = true)
     private List<Comment> comments;
 
@@ -42,8 +48,9 @@ public class Post extends BaseEntity {
     }
 
 
-    public void update(PostUpdateRequestDto requestDto) {
+    public Post update(PostUpdateRequestDto requestDto) {
         this.title=requestDto.getTitle();
         this.content=requestDto.getContent();
+        return this;
     }
 }

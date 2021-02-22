@@ -9,12 +9,17 @@ import org.apache.catalina.User;
 
 import javax.persistence.Column;
 import javax.persistence.Lob;
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 @NoArgsConstructor
 public class PostSaveRequestDto {
+
+
+    @NotEmpty(message = "title is empty....")
     private String title;
     private String writer;
+    @NotEmpty(message = "content is empty....")
     private String content;
     private Users user;
 
