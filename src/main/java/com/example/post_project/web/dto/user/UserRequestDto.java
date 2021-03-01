@@ -19,10 +19,11 @@ import javax.validation.constraints.Pattern;
 @ToString
 public class UserRequestDto {
     @NotEmpty(message = "이름을 입력하세요.")
+    @Pattern(regexp = "^[a-zA-Z]{1}[a-zA-Z0-9_]{4,11}$\n",message = "시작은 영문으로만, '_'를 제외한 특수문자 안되며 영문, 숫자, '_'으로만 이루어진 5 ~ 12자 이하\n")
     private String name;
 
     @NotEmpty
-    @Email(message = "올바르게 입력해주세요.")
+    @Email(message = "이메일 형식을 올바르게 입력해주세요.")
     private String email;  // username
 
     @NotEmpty

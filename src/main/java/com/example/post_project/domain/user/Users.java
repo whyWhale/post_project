@@ -48,13 +48,11 @@ public class Users extends BaseEntity implements UserDetails {
         this.role = role;
     }
 
-    public Users(String name, String email, Role role,String password) {
+    public Users (String name, String email, Role role,String password) {
         this.name = name;
         this.email = email;
         this.role = role;
-        System.out.println("Users 생성자 : "+password);
         this.password=password;
-        System.out.println("password = " + password);
     }
 
 

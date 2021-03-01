@@ -77,6 +77,7 @@ public class indexController {
     {
         return "signUpForm";
     }
+
     @GetMapping("/jsEx")
     public String s(@RequestParam(name="t", required = false) String title){
         System.out.println(title);

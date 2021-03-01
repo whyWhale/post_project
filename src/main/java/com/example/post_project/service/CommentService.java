@@ -29,14 +29,20 @@ public class CommentService extends BaseService<commentRequestDto, commentRespon
     }
 
     @Override
+    public ResponseEntity<commentResponseDto> Read(SessionUser sessionUser) {
+        return null;
+    }
+
+
+    @Override
     @Transactional
-    public Long update(commentRequestDto commentRequestDto, SessionUser sessionUser) {
+    public Long Update(commentRequestDto commentRequestDto, SessionUser sessionUser) {
         return null;
     }
 
     @Override
     @Transactional
-    public Long delete(Long id, SessionUser sessionUser) {
+    public Long Delete(Long id, SessionUser sessionUser) {
         return null;
     }
 }

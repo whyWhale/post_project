@@ -1,6 +1,7 @@
 package com.example.post_project.web.user;
 
 import com.example.post_project.service.UserService;
+import com.example.post_project.web.CRUD_Controller;
 import com.example.post_project.web.dto.user.UserRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,19 +16,22 @@ import javax.validation.Valid;
 @RequestMapping("/user/api")
 @RequiredArgsConstructor
 @RestController
-public class userApiController {
+public class userApiController{
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping("/test")
-    public String ans() {
-        return "ans test securiy pass";
-    }
 
     @PostMapping("")
     public ResponseEntity create(@Valid @RequestBody UserRequestDto userRequestDto) {
         userRequestDto.encrypt(passwordEncoder);
         return userService.create(userRequestDto);
     }
+
+    @PostMapping("/mailCheck")
+    public ResponseEntity duplicateEmailChecking(@RequestParam(value = "email") String email)
+    {
+        return userService.checkEmail(email);
+    }
+
 }
 

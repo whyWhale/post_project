@@ -1,5 +1,6 @@
 package com.example.post_project.service;
 
+import com.example.post_project.HttpStatusResponse;
 import com.example.post_project.config.auth.dto.SessionUser;
 import com.example.post_project.domain.user.Users;
 import com.example.post_project.domain.user.UsersRepository;
@@ -10,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,7 +41,23 @@ public class UserService implements UserDetailsService {
     @Transactional
     public ResponseEntity create(UserRequestDto userRequestDto)
     {
+        boolean flag=usersRepository.existsByEmail(userRequestDto.getEmail());
+        if(flag)
+        {
+            return HttpStatusResponse.RESPONSE_CONFLICT;
+        }
         Users user=usersRepository.save(userRequestDto.toEntity());
+
         return ResponseEntity.ok("회원가입이 정상적으로 완료되었습니다.");
+    }
+
+
+    public ResponseEntity checkEmail(String email) {
+        boolean check = usersRepository.existsByEmail(email);
+        if(check)
+        {
+            return HttpStatusResponse.RESPONSE_CONFLICT;
+        }
+        return ResponseEntity.ok("사용가능한 아이디 입니다.");
     }
 }

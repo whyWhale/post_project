@@ -6,6 +6,7 @@ import com.example.post_project.web.CRUD_Controller;
 import com.example.post_project.web.dto.comment.commentRequestDto;
 import com.example.post_project.web.dto.comment.commentResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class CommentApiController extends CRUD_Controller<commentRequestDto, commentResponseDto, SessionUser, Comment> {
-
 
 }

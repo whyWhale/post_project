@@ -24,4 +24,12 @@ spring:
 
   logging:
     level:
-    org.hibernate.type.descriptor.sql: trace
+    root : WARN
+    org.springframework.security : DEBUG
+    org.hibernate.type.descriptor.sql: DEBUG
+
+
+gretting :
+  welcome :${spring.application.name}
+
+
