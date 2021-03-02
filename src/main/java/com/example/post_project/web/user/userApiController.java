@@ -12,9 +12,14 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @RequestMapping("/user/api")
 @RequiredArgsConstructor
+@Validated
 @RestController
 public class userApiController{
     private final UserService userService;
@@ -22,14 +27,15 @@ public class userApiController{
 
 
     @PostMapping("")
-    public ResponseEntity create(@Valid @RequestBody UserRequestDto userRequestDto) {
+    public ResponseEntity create(@RequestBody @Valid UserRequestDto userRequestDto) {
         userRequestDto.encrypt(passwordEncoder);
         return userService.create(userRequestDto);
     }
 
     @PostMapping("/mailCheck")
-    public ResponseEntity duplicateEmailChecking(@RequestParam(value = "email") String email)
+    public ResponseEntity duplicateEmailChecking(@RequestParam(value = "email",required = true) @Validated @NotEmpty @Email String email)
     {
+        System.out.println(email);
         return userService.checkEmail(email);
     }
 

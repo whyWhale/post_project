@@ -46,9 +46,9 @@ public class UserService implements UserDetailsService {
         {
             return HttpStatusResponse.RESPONSE_CONFLICT;
         }
+        System.out.println(userRequestDto.toString());
         Users user=usersRepository.save(userRequestDto.toEntity());
-
-        return ResponseEntity.ok("회원가입이 정상적으로 완료되었습니다.");
+        return ResponseEntity.ok().body("로그인이 완료되었습니다.");
     }
 
 
